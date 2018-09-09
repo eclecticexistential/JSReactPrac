@@ -171,12 +171,35 @@ for (let teacher of teachers){ //breaks after finding name  for in for obj props
 	}
 }
 
+const yo = new Set();
+yo.add(4);
+yo.add(7);
+yo.add(2);
+yo.add(6);
 
+if (yo.has(4)) console.log("Yes.");
+console.log('yo size:', yo.size);
+let arrayONum = Array.from(yo);
+console.log(arrayONum);
+let alumni = new Set(arrayONum);
 
+let followA = new Map();
 
+let woo = {name: "doo", age: 33},
+	doo = {name: "woo", age: 34}
+	
+followA.set("woo", woo);
+followA.set("doo", doo);
 
+if (followA.has("woo")) console.log(followA);
 
+console.log('woo:', followA.get('doo'));
+//followA.delete('woo');
+//followA.clear();
 
+for (let student of followA){
+	console.log(`'${student[0]}': ${student[1].name} is ${student[1].age} years old.`);
+}
 
 
 
