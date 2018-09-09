@@ -43,7 +43,7 @@ messageTextArea.addEventListener('blur', blurHandler);
 
 
 const listO = ['red', 'green', 'blue', 'purple', 'orange'];
-var counter = 0;
+let counter = 0;
 
 function returnColor(){
 	if(counter == listO.length){
@@ -66,6 +66,65 @@ function discoLights(currC, nextC){
 }
 
 setInterval(returnColor, 1000);
+
+let strToSearch = "antidisistablishmentarianism";
+console.log(strToSearch.startsWith("anti")); //can use 2 arg to show where to start looking index wise
+console.log(strToSearch.endsWith("nism")); 
+console.log(strToSearch.includes("blish"));
+
+
+let Teacher = function (data) {
+	this.name = data.name;
+	this.greet = function (studentCnt){
+		let promise = new Promise(function (resolve, reject) {
+			if (studentCnt === 0){
+				reject('Zero students in class');
+			}else{
+				resolve(`Hello to ${studentCnt} of my favorite students!`);
+			}
+		});
+		return promise;
+	}
+}
+
+var Classroom = function (data) {
+	this.subject = data.name;
+	this.teacher = data.teacher;
+	this.students = [];
+	this.addStudent = function (data){
+		this.students.push(data);
+		this.greet();
+	}
+	this.greet = () => {
+		this.teacher.greet(this.students.length).then(
+		
+		greeting => console.log(`${this.teacher.name} says: `, greeting),
+		err => console.log(err));
+	}
+}
+
+var myTeacher = new Teacher({name: 'Jessica'});
+var myClassroom = new Classroom({name: 'Our Future', teacher: myTeacher});
+
+myClassroom.addStudent({name: 'Dave'});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
