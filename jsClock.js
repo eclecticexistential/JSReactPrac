@@ -109,6 +109,133 @@ var myClassroom = new Classroom({name: 'Our Future', teacher: myTeacher});
 myClassroom.addStudent({name: 'Dave'});
 
 
+function myFunction(name, ...params){
+	console.log(name, params); // params = rest o arg in an array
+}
+
+const ogFlav = ['Choco', 'Vanil'];
+const newFlav = ['Straw', 'Mint'];
+const inventory = ['Rocky Road', ...ogFlav, 'Neop', ...newFlav];
+console.log(inventory);
+
+function wooDoo (name, iceCream){
+	console.log(`${name} really likes ${iceCream} ice cream.`)
+}
+
+let args = ['Gabe', 'Vanilla'];
+wooDoo(...args);
+
+let toybox = {item1: 'car', item2: 'ball', item3: 'frisbee'};
+let {item1, item2} = toybox;
+console.log(item1, item2); // item3 no log, still in toybox
+let {item3: disc} = toybox;
+console.log(disc) // logs frisbee due to rename
+
+let widgets = ['widget1','widget2','widget3','widget4','widget5']
+let [a, b, c, ...d] = widgets;
+//first ^ three = first 3 index, last two in d
+
+let parentObject = {
+	title: 'Super Important',
+	childObject: {
+		title: 'Equally Important'
+	}
+}
+
+let {title, childObject: { title: childTitle }} =  parentObject
+
+console.log(childTitle); //gets out
+
+function submit(name, comment, rating = 5){
+	let data = {name, comment, rating};
+	for(let key in data){
+		console.log(key + ':', data[key]);
+	}
+}
+
+submit("English", "Awesome sauce!"); // auto does dictionary
+
+const teachers = [{name: "Me", rating:10}, {name: "You", rating: 9.5}, {name: "Boy", rating: 10}];
+
+teachers.forEach(teacher => { // goes through all names
+	console.log(teacher)
+	if (teacher.name === "Me"){
+		console.log(teacher.rating);
+	}
+});
+
+for (let teacher of teachers){ //breaks after finding name  for in for obj props
+	console.log(teacher.name);
+	if(teacher.name === "Me"){
+		console.log(teacher.rating);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
