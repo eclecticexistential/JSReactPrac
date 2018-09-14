@@ -201,6 +201,263 @@ for (let student of followA){
 	console.log(`'${student[0]}': ${student[1].name} is ${student[1].age} years old.`);
 }
 
+class Person {
+	dance() {
+		const dances = [
+		'waltz',
+		'tango',
+		'mambo',
+		'foxtrot'
+	];
+	console.log(`${this.name} is doing the ${dances[Math.floor(Math.random() * dances.length)]}!`);
+	}
+	constructor({name, age, eyeColor = 'brown' } = {}) {
+		this.name = name;
+		this.age = age;
+		this.eyeColor = eyeColor;
+	}
+}
+
+class Student extends Person{
+	dance(traditional){
+		if(traditional){
+			super.dance();
+			return;
+		}
+		const dances = [
+		'lyrical',
+		'tap',
+		'ballet',
+		'jazz'
+	];
+	console.log(`${this.name} is doing the ${dances[Math.floor(Math.random() * dances.length)]}!`);
+	}
+	constructor({name, age, interestLevel = 5 } = {}){
+		super({name, age});
+		this.name = name;
+		this.age = age;
+		this.interestLevel = interestLevel;
+		this.grades = new Map;
+	}
+}
+
+let jessicaC = new Student({name: 'Jessica', age: 42, interestLevel: 3 });
+jessicaC.dance(true);
+jessicaC.dance(false);
+
+class Bird {
+	static changeColor(bird, color){
+		bird.color = color;
+	}
+	constructor({color = 'red' } = {}){
+		this.color = color;
+	}
+}
+
+let redBird = new Bird;
+console.log(redBird.color);
+Bird.changeColor(redBird, 'blue');
+console.log(redBird.color);
+
+class Dude{
+	get name(){
+		return `${this.firstName} ${this.lastName}`;
+	}
+	set name(input){
+		let name = input.split(' ');
+		this.firstName = name[0];
+		this.lastName = name[1];
+	}
+	constructor({firstName, lastName, age, hobby, interestLevel=5 }= {}){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+		this.hobby = hobby;
+		this.interestLevel= interestLevel;
+	}
+}
+
+let brutalB = new Dude ({firstName: 'Brutus', lastName: 'Cottner', age: 12, hobby: 'sleeping'});
+console.log(brutalB.name);
+
+//### closures
+
+var birds = 3;
+
+function dogHouse(){
+	var dogs = 3;
+	function showDogs(){
+		console.log(dogs);
+	}
+	return showDogs;
+}
+
+var getDogs = dogHouse();
+getDogs();
+
+// instead of var count = 0;
+
+function makeBirdCounter(){
+	var count = 0;
+	return function(){
+		count += 1;
+		return count + ' birds';
+	}
+}
+
+var birdCounter = makeBirdCounter();
+birdCounter(); // 1
+birdCounter(); // 2
+
+function makeCounter(noun){
+	var count = 0;
+	return function(){
+		count += 1;
+		return count + ' ' + noun;
+	}
+}
+
+var fishCounter = makeCounter('fish');
+var catCounter = makeCounter('cat');
+fishCounter();
+catCounter();
+
+
+
+const people = [{name: "Bob", age: 34}, {name:"Jim", age: 22}, {name:"Tim", age: 14}];
+
+const people_names = people.map(function() {return people;})
+
+console.log(people_names);
+
+const people_with_name = people.filter(function(people){
+	if (people.name){
+		return people.age;
+	}
+})
+
+console.log(people_with_name);
+
+
+// find returns the first example ... filter goes to the end
+
+const person = people.find(function(person){
+	return person.age === 93;
+})
+
+const person1 = people.find((person) => {
+	return person.age === 93;
+})
+
+// the code above same ms as one ballet   <---- why??????
+
+const person2 = people.find(person => person.age === 93)
+
+
+var buttons = document.getElementByTagName('button');
+
+function loop1(){
+	for (i = 0; i < buttons.length; i += 1)
+	{
+		var button1 = buttons[i];
+		var buttonName = button.innerHTML; // as a var variable, this will end up getting to #third for every button, rather than 1, 2, etc. ...
+		button.addEventListener('click', () => console.log(buttonName));
+	}
+}
+
+// instead of anon func...
+
+function createHandler(name){() => console.log(name)}
+
+// then...
+
+for(var i = 0; i < buttons.length; i += 1)
+{
+	var button1 = buttons[i];
+	var buttonName = button1.innerHTML;
+	button.addEventListener('click', createHandler(buttonName)); // encapsulates buttonName to give right one
+}
+
+// after es2015 however...
+
+for(var i = 0; i < buttons.length; i += 1)
+{
+	var button1 = buttons[i];
+	let buttonName = button1.innerHTML; // makes new block scope, gives each button its own name
+	button.addEventListener('click', console.log(buttonName)); // ??
+}
+
+// node escape ctrl c or .exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
